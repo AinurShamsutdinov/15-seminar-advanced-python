@@ -57,17 +57,30 @@
 # get_average_test_score(self, subject): Возвращает средний балл по тестам для заданного предмета.
 #
 # get_average_grade(self): Возвращает средний балл по всем предметам.
+import argparse
 import csv
+import logging
+
 import pytest
 
 
 class Student:
+    file_name: str = ''
+
+    logging.basicConfig(filename='project.log',
+                        filemode='w',
+                        encoding='utf-8',
+                        level=logging.INFO,
+                        format='%(levelname)s %(asctime)s %(message)s',
+                        datefmt='%m/%d/%Y%I:%M:%S %p')
 
     def __init__(self, name, subjects_file):
+        logging.info(f'Student name = {name}, subjects file name = {subjects_file}')
         self.name = name
         self.subjects = subjects_file
 
     def __setattr__(self, name, value):
+        logging.info(f'Setting attribute = {name}, attribute value = {value}')
         if name == 'name':
             name_list = value.split(' ')
             is_name_ok = True
@@ -82,10 +95,12 @@ class Student:
             self.__dict__[name] = self.load_subjects(value)
 
     def __getattr__(self, name):
+        logging.info(f'Get attribute = {name}')
         return self.__dict__[name]
 
     def __str__(self):
         result = f'Студент: {self.__dict__['name']}\nПредметы: '
+        logging.info(f'Student to string, name = {self.name}, subjects = {self.subjects.keys}')
         for keys in self.__dict__['subjects'].keys():
             if len(self.__dict__['subjects'][keys]['grade']) != 0 or len(self.__dict__['subjects'][keys]['grade']) != 0:
                 result += (keys + ', ')
@@ -94,6 +109,7 @@ class Student:
 
     # interesting point, this function is used to parse csv file, and it called from __setattr__ descriptor function
     def load_subjects(self, subjects_file):
+        logging.info(f'Reading subjects from file {subjects_file}')
         file = open(subjects_file, mode='r')
         subj_name = csv.DictReader(file).fieldnames
         subjects = dict()
@@ -102,117 +118,47 @@ class Student:
         return subjects
 
     def add_grade(self, subject, grade):
-        '''
-        :param subject: Предмет
-        :param grade: Оценка
-        :return: Ничего если оценка между 2 и 5, если нет ошибка значения
-        >>> stud = Student("John Johnson", 'subjects.csv')
-        >>> stud.add_grade('Математика', 666)
-        Traceback (most recent call last):
-        ...
-        ValueError: Оценка должна быть целым числом от 2 до 5
-        '''
+        logging.info(f'Adding subject {subject}, with grade {grade}')
         if 2 <= grade <= 5 and subject in self.__dict__['subjects'].keys():
             self.__dict__['subjects'][subject]['grade'].append(grade)
         elif not 2 <= grade <= 5:
             raise ValueError('Оценка должна быть целым числом от 2 до 5')
 
     def add_test_score(self, subject, test_score):
-        '''
-        :param subject: Предмет
-        :param grade: Результат теста
-        :return: Ничего если оценка между 0 и 100, если нет ошибка значения
-        >>> stud_1 = Student("John Johnson", 'subjects.csv')
-        >>> stud_1.add_test_score('Математика', 666)
-        Traceback (most recent call last):
-        ...
-        ValueError: Результат теста должен быть целым числом от 0 до 100
-        '''
+        logging.info(f'Adding test score of subject {subject} and score {test_score}')
         if 0 <= test_score <= 100 and subject in self.__dict__['subjects'].keys():
             self.__dict__['subjects'][subject]['test'].append(test_score)
         elif not 0 <= test_score <= 100:
             raise ValueError('Результат теста должен быть целым числом от 0 до 100')
 
     def get_average_test_score(self, subject):
-        '''
-        :param subject: Предмет
-        :return: Средний результат тестов
-        >>> stud_2 = Student('John Johnson', 'subjects.csv')
-        >>> stud_2.add_test_score('Математика', 90)
-        >>> stud_2.add_test_score('Математика', 90)
-        >>> stud_2.add_test_score('Физика', 80)
-        >>> stud_2.add_test_score('Физика', 80)
-        >>> stud_2.add_test_score('Физика', 80)
-        >>> stud_2.add_test_score('История', 70)
-        >>> stud_2.add_test_score('История', 70)
-        >>> stud_2.add_test_score('История', 70)
-        >>> stud_2.add_test_score('История', 70)
-        >>> stud_2.get_average_test_score('История')
-        70.0
-        '''
+        logging.info(f'Getting average test score of subject {subject}, student {self.name}')
         if subject not in self.__dict__['subjects'].keys():
             raise ValueError(f'Предмет {subject} не найден')
         summ: int = 0
         amount: int = len(self.__dict__['subjects'][subject]['test'])
         for i in self.__dict__['subjects'][subject]['test']:
             summ += i
-        return summ / amount
+        average_test_score = summ / amount
+        logging.info(f'Getting average test score {average_test_score} of subject {subject}, student {self.name}')
+        return average_test_score
 
     def get_average_grade(self):
-        '''
-        :return: Средняя оценка студента
-        >>> stud_3 = Student('John Johnson', 'subjects.csv')
-        >>> stud_3.add_grade('История', 5)
-        >>> stud_3.add_grade('Математика', 5)
-        >>> stud_3.get_average_grade()
-        5.0
-        >>> stud_3.add_grade('Литература', 4)
-        >>> stud_3.add_grade('Физика', 4)
-        >>> stud_3.get_average_grade()
-        4.5
-        '''
+        logging.info(f'Getting average grade of student {self.name}')
         summ: int = 0
         amount: int = 0
         for subject in self.__dict__['subjects'].values():
             amount += len(subject['grade'])
             for grade in subject['grade']:
                 summ += grade
-        return summ / amount
+        average_grade = summ / amount
+        logging.info(f'Getting average grade of student {self.name}, average grade {average_grade}')
+        return average_grade
 
-
-# Пример
-#
-# На входе:
-
-
-# student = Student("Иван Иванов", "subjects.csv")
-# print(student.subjects)
-#
-# student.add_grade("Математика", 4)
-# student.add_test_score("Математика", 85)
-#
-# student.add_grade("История", 5)
-# student.add_test_score("История", 92)
-#
-# print(student.subjects)
-# average_grade = student.get_average_grade()
-# print(f"Средний балл: {average_grade}")
-#
-# print(student.subjects)
-# average_test_score = student.get_average_test_score("Математика")
-# print(f"Средний результат по тестам по математике: {average_test_score}")
-#
-# print(student)
-# На выходе:
-#
-#
-# Средний балл: 4.5
-# Средний результат по тестам по математике: 85.0
-# Студент: Иван Иванов
-# Предметы: Математика, История
 
 def test_add_grade():
-    stud = Student("John Johnson", 'subjects.csv')
+    subjects_file = Student.file_name
+    stud = Student("John Johnson", subjects_file)
     try:
         stud.add_grade('Математика', 666)
         assert False
@@ -221,7 +167,8 @@ def test_add_grade():
 
 
 def test_add_test_score():
-    stud = Student("John Johnson", 'subjects.csv')
+    subjects_file = Student.file_name
+    stud = Student("John Johnson", subjects_file)
     try:
         stud.add_test_score('Математика', 666)
         assert False
@@ -230,7 +177,8 @@ def test_add_test_score():
 
 
 def test_get_average_test_score():
-    stud_2 = Student('John Johnson', 'subjects.csv')
+    subjects_file = Student.file_name
+    stud_2 = Student('John Johnson', subjects_file)
     stud_2.add_test_score('Математика', 90)
     stud_2.add_test_score('Математика', 90)
     stud_2.add_test_score('Физика', 80)
@@ -244,7 +192,8 @@ def test_get_average_test_score():
 
 
 def test_get_average_grade():
-    stud_3 = Student('John Johnson', 'subjects.csv')
+    subjects_file = Student.file_name
+    stud_3 = Student('John Johnson', subjects_file)
     stud_3.add_grade('История', 5)
     stud_3.add_grade('Математика', 5)
     assert stud_3.get_average_grade() == 5.0
@@ -253,5 +202,10 @@ def test_get_average_grade():
     assert stud_3.get_average_grade() == 4.5
 
 
-# Запускаем pytest.main() с нужными параметрами
-pytest.main(["--no-header", '-q', "--durations=0", '5-task.py'])
+parser = argparse.ArgumentParser(description='Console argument parser')
+parser.add_argument('file_name', default=None, metavar='N', type=str, nargs='*', help='File name with subjects')
+args = parser.parse_args()
+Student.file_name = args.__dict__['file_name'][0]
+print(f'Student.file_name = {Student.file_name}')
+# start test from consle with command: python3 student.py subjects.csv
+pytest.main(["--no-header", '-q', "--durations=0", 'student.py'])

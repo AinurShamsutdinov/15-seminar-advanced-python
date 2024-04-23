@@ -1,0 +1,74 @@
+INFO 04/23/202407:08:37 PM Student name = John Johnson, subjects file name = subjects.csv
+INFO 04/23/202407:08:37 PM Setting attribute = name, attribute value = John Johnson
+INFO 04/23/202407:08:37 PM Setting attribute = subjects, attribute value = subjects.csv
+INFO 04/23/202407:08:37 PM Reading subjects from file subjects.csv
+INFO 04/23/202407:08:37 PM Adding subject Математика, with grade 666
+INFO 04/23/202407:08:37 PM Student name = John Johnson, subjects file name = subjects.csv
+INFO 04/23/202407:08:37 PM Setting attribute = name, attribute value = John Johnson
+INFO 04/23/202407:08:37 PM Setting attribute = subjects, attribute value = subjects.csv
+INFO 04/23/202407:08:37 PM Reading subjects from file subjects.csv
+INFO 04/23/202407:08:37 PM Adding test score of subject Математика and score 666
+INFO 04/23/202407:08:37 PM Student name = John Johnson, subjects file name = subjects.csv
+INFO 04/23/202407:08:37 PM Setting attribute = name, attribute value = John Johnson
+INFO 04/23/202407:08:37 PM Setting attribute = subjects, attribute value = subjects.csv
+INFO 04/23/202407:08:37 PM Reading subjects from file subjects.csv
+INFO 04/23/202407:08:37 PM Adding test score of subject Математика and score 90
+INFO 04/23/202407:08:37 PM Adding test score of subject Математика and score 90
+INFO 04/23/202407:08:37 PM Adding test score of subject Физика and score 80
+INFO 04/23/202407:08:37 PM Adding test score of subject Физика and score 80
+INFO 04/23/202407:08:37 PM Adding test score of subject Физика and score 80
+INFO 04/23/202407:08:37 PM Adding test score of subject История and score 70
+INFO 04/23/202407:08:37 PM Adding test score of subject История and score 70
+INFO 04/23/202407:08:37 PM Adding test score of subject История and score 70
+INFO 04/23/202407:08:37 PM Adding test score of subject История and score 70
+INFO 04/23/202407:08:37 PM Getting average test score of subject История, student John Johnson
+INFO 04/23/202407:08:37 PM Getting average test score 70.0 of subject История, student John Johnson
+INFO 04/23/202407:08:37 PM Student name = John Johnson, subjects file name = subjects.csv
+INFO 04/23/202407:08:37 PM Setting attribute = name, attribute value = John Johnson
+INFO 04/23/202407:08:37 PM Setting attribute = subjects, attribute value = subjects.csv
+INFO 04/23/202407:08:37 PM Reading subjects from file subjects.csv
+INFO 04/23/202407:08:37 PM Adding subject История, with grade 5
+INFO 04/23/202407:08:37 PM Adding subject Математика, with grade 5
+INFO 04/23/202407:08:37 PM Getting average grade of student John Johnson
+INFO 04/23/202407:08:37 PM Getting average grade of student John Johnson, average grade 5.0
+INFO 04/23/202407:08:37 PM Adding subject Литература, with grade 4
+INFO 04/23/202407:08:37 PM Adding subject Физика, with grade 4
+INFO 04/23/202407:08:37 PM Getting average grade of student John Johnson
+INFO 04/23/202407:08:37 PM Getting average grade of student John Johnson, average grade 4.5
+INFO 04/23/202407:08:37 PM Student name = John Johnson, subjects file name = subjects.csv
+INFO 04/23/202407:08:37 PM Setting attribute = name, attribute value = John Johnson
+INFO 04/23/202407:08:37 PM Setting attribute = subjects, attribute value = subjects.csv
+INFO 04/23/202407:08:37 PM Reading subjects from file subjects.csv
+INFO 04/23/202407:08:37 PM Adding subject Математика, with grade 666
+INFO 04/23/202407:08:37 PM Student name = John Johnson, subjects file name = subjects.csv
+INFO 04/23/202407:08:37 PM Setting attribute = name, attribute value = John Johnson
+INFO 04/23/202407:08:37 PM Setting attribute = subjects, attribute value = subjects.csv
+INFO 04/23/202407:08:37 PM Reading subjects from file subjects.csv
+INFO 04/23/202407:08:37 PM Adding test score of subject Математика and score 666
+INFO 04/23/202407:08:37 PM Student name = John Johnson, subjects file name = subjects.csv
+INFO 04/23/202407:08:37 PM Setting attribute = name, attribute value = John Johnson
+INFO 04/23/202407:08:37 PM Setting attribute = subjects, attribute value = subjects.csv
+INFO 04/23/202407:08:37 PM Reading subjects from file subjects.csv
+INFO 04/23/202407:08:37 PM Adding test score of subject Математика and score 90
+INFO 04/23/202407:08:37 PM Adding test score of subject Математика and score 90
+INFO 04/23/202407:08:37 PM Adding test score of subject Физика and score 80
+INFO 04/23/202407:08:37 PM Adding test score of subject Физика and score 80
+INFO 04/23/202407:08:37 PM Adding test score of subject Физика and score 80
+INFO 04/23/202407:08:37 PM Adding test score of subject История and score 70
+INFO 04/23/202407:08:37 PM Adding test score of subject История and score 70
+INFO 04/23/202407:08:37 PM Adding test score of subject История and score 70
+INFO 04/23/202407:08:37 PM Adding test score of subject История and score 70
+INFO 04/23/202407:08:37 PM Getting average test score of subject История, student John Johnson
+INFO 04/23/202407:08:37 PM Getting average test score 70.0 of subject История, student John Johnson
+INFO 04/23/202407:08:37 PM Student name = John Johnson, subjects file name = subjects.csv
+INFO 04/23/202407:08:37 PM Setting attribute = name, attribute value = John Johnson
+INFO 04/23/202407:08:37 PM Setting attribute = subjects, attribute value = subjects.csv
+INFO 04/23/202407:08:37 PM Reading subjects from file subjects.csv
+INFO 04/23/202407:08:37 PM Adding subject История, with grade 5
+INFO 04/23/202407:08:37 PM Adding subject Математика, with grade 5
+INFO 04/23/202407:08:37 PM Getting average grade of student John Johnson
+INFO 04/23/202407:08:37 PM Getting average grade of student John Johnson, average grade 5.0
+INFO 04/23/202407:08:37 PM Adding subject Литература, with grade 4
+INFO 04/23/202407:08:37 PM Adding subject Физика, with grade 4
+INFO 04/23/202407:08:37 PM Getting average grade of student John Johnson
+INFO 04/23/202407:08:37 PM Getting average grade of student John Johnson, average grade 4.5
